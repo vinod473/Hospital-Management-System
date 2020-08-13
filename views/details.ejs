@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/details.css">
 </head>
 <body>
-    <form>
+    <form >
         <div class="container">
             <h3 class="text-center">Patient Details</h3>
             <hr>
@@ -25,7 +25,7 @@
             <input type="number" value="<%= patient.age %>" name="age" id="age" readonly>
             <br>
             <label for="dateofadmission"><b>Date Of Admission</b></label>
-            <input type="text" value="<%= patient.dateofadmission %>" name="dateofadmission" id="dateofadmission" readonly>
+            <input type="text" value="<%= patient.dateOfAdmission.toDateString().split('-')[0] %>" name="dateofadmission" id="dateofadmission" readonly>
             <br>
             <label for="typeOfBed"><b>Type Of Bed</b></label>
             <input type="text" value="<%= patient.typeOfBed %>" name="typeOfBed" id="typeOfBed" readonly>
@@ -38,7 +38,7 @@
             <input type="text" value="<%= patient.city %>" name="city" id="city" readonly>
             <br>
             <label for="state"><b>State</b></label>
-            <input type="text" placeholder="<%= patient.state %>" name="state" id="state" readonly>
+            <input type="text" value="<%= patient.state %>" name="state" id="state" readonly>
             <br>
             <label for="status"><b>Status</b></label>
             <input type="text" value="<%= patient.status %>" name="status" id="status" readonly>

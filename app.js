@@ -114,9 +114,7 @@ const {ensureAuthenticated} = require("./config/auth.js");
 app.get('/dashboard',ensureAuthenticated,(req,res)=>{
     res.render('dashboard');
 });
-app.get('/update',(req,res,next)=>{
-    res.render('update');
-});
+
 //logout
 app.get('/logout',ensureAuthenticated,(req,res)=>{
     req.logout();
@@ -163,7 +161,7 @@ app.post("/registerPatient",(req,res)=>{
                         .then(pt=>{
                             req.flash("success_msg","Successfully Registered!");
                             res.redirect("registerPatient");
-                        })
+                        });
                     }
                 })
             .catch(err=>console.log(err));
@@ -184,6 +182,28 @@ app.post("/search",(req,res)=>{
                 }
             })
             .catch(err=>console.log(err));
+});
+app.get("/update",ensureAuthenticated,(req,res)=>{
+    res.render("search");
+});
+app.post("/update",(req,res)=>{
+    const ssnid = req.body.ssnid;
+    Patient.findOne({ssnid:ssnid})
+            .then(patient =>{
+                if(patient){
+                    var req.session.localVar = patient;
+                    res.redirect("/update/patient");
+                }
+                else{
+                    req.flash({"error_msg":"Patient not found!!"});
+                    res.render("search");
+                }
+            })
+            .catch(err => console.log(err));
+});
+app.get("/update/patient",(req,res)=>{
+    const patient = req.session.localVar;
+   res.render("update",{patient}); 
 });
 app.listen(PORT,(req,res)=>{
   console.log(`server started in port ${PORT}`);
