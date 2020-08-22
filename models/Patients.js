@@ -4,7 +4,10 @@ const patientSchema = mongoose.Schema({
     ssnid : Number,
     name : String,
     age: Number,
-    dateOfAdmission: Date,
+    dateOfAdmission: {
+    	type : Date,
+    	default: Date.now(),
+    },  
     typeOfBed: String,
     address: String,
     city: String,

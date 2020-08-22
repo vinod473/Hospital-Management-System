@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Pateint Details</title>
+    <link rel="stylesheet" type="text/css" href="/css/update.css">
+</head>
+<body>
+    <form method="post" action="/delete/<%= patient.ssnid %>">
+        <div class="container">
+            <h3 class="text-center">Patient Details</h3>
+            <hr>
+            <%- include('partials/messages.ejs') %>
+            <% if( patient ){ %>
+            <label for="ssnid"><b>SSN ID</b></label>
+            <input type="number" value="<%= patient.ssnid %>" name="ssnid" id="ssnid" required>
+            <br>
+            <label for="name"><b>Name</b></label>
+            <input type="text" value="<%= patient.name %>" name="name" id="name" required>
+            <br>
+            
+            <label for="age"><b>Age</b></label>
+            <input type="number" value="<%= patient.age %>" name="age" id="age" required>
+            <br>
+            
+            <label for="dateofadmission"><b>Date Of Admission</b></label>
+            <input type="text" value="<%= patient.dateOfAdmission.toDateString().split('-')[0] %>" name="dateofadmission" id="dateofadmission" readonly>
+            <br>
+            
+            <label for="typeofbed"><b>Type Of Bed</b></label>
+            <input type="text" value="<%= patient.typeOfBed %>" name="typeOfBed" id="typeOfBed" readonly>
+            <br>
+            
+            <label for="address"><b>Address</b></label>
+            <input type="text" value="<%= patient.address %>" name="address" id="address" required>
+            <br>
+            <label for="city"><b>City</b></label>
+            <input type="text" value="<%= patient.city %>" name="city" id="city" required>
+            <br>
+            <label for="state"><b>State</b></label>
+            <input type="text" value="<%= patient.state %>" name="state" id="state" required>
+            <br><label for="status"><b>Status</b></label>
+            <input type="text" value="<%= patient.status %>" name="status" id="status" readonly>
+            <br>
+            <button type="submit" class="btn btn-danger" >Delete</button>
+            <% } %>
+        </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -235,6 +235,39 @@ app.post("/update/:token",(req,res)=>{
         else throw err;
     });
 });
+app.get("/delete",(req,res)=>{
+    res.render("update");
+});
+app.post("/delete",(req,res)=>{
+    const ssnid = req.body.ssnid;
+    Patient.findOne({ssnid:ssnid})
+            .then(user=>{
+                if(user){
+                    res.render("deletePatient",{patient:user});
+                }
+                else{
+                    req.flash("error_msg","Pateint Not found!!");
+                    res.redirect("delete");
+                }
+            })
+            .catch(err=>console.log(err));
+});
+app.get("/delete/:token",(req,res)=>{
+    res.render("dashboard");
+});
+app.post("/delete/:token",(req,res)=>{
+        Patient.deleteOne({ssnid:req.params.token})
+            .then(doc=>{
+                if(doc.deletedCount==1){
+                    req.flash("success_msg","Patient Successfully deleted!!");
+                    res.render("dashboard");
+                }
+                else{
+                    console.log("delete error");
+                }
+            })
+            .catch(err=>console.log(err));
+});
 app.listen(PORT,(req,res)=>{
   console.log(`server started in port ${PORT}`);
 });
