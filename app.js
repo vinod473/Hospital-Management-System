@@ -121,7 +121,7 @@ app.get('/logout',ensureAuthenticated,(req,res)=>{
     req.flash('success_msg','Successfully Logged out!');
     res.redirect('/login');
 });
-app.get("/patients",ensureAuthenticated,(req,res)=>{
+app.get("/patients",(req,res)=>{
    Patient.find({})
    .then(patients=>{
        res.render("patients",{patients});
@@ -159,15 +159,15 @@ app.post("/registerPatient",(req,res)=>{
                     const newPatient = new Patient({ssnid,name,age,dateOfAdmission,typeOfBed,address,city,state,status});
                     newPatient.save()
                         .then(pt=>{
-                            req.flash("success_msg","Successfully Registered!");
-                            res.redirect("registerPatient");
+                            req.flash("success_msg","Patient Successfully Registered!");
+                            res.redirect("patients");
                         });
                     }
                 })
             .catch(err=>console.log(err));
     }
 });
-app.get("/search",ensureAuthenticated,(req,res)=>{
+app.get("/search",(req,res)=>{
     res.render("search");
 });
 app.post("/search",(req,res)=>{
@@ -178,32 +178,62 @@ app.post("/search",(req,res)=>{
                     res.render("details",{patient});
                 }
                 else{
-                    res.render("details",{"error_msg":"Patient Not Found!",patient});
+                    req.flash("error_msg","Pateint Not found!!");
+                    res.redirect("search");
                 }
             })
             .catch(err=>console.log(err));
 });
-app.get("/update",ensureAuthenticated,(req,res)=>{
-    res.render("search");
+app.get("/update",(req,res)=>{
+    res.render("update");
 });
 app.post("/update",(req,res)=>{
     const ssnid = req.body.ssnid;
     Patient.findOne({ssnid:ssnid})
-            .then(patient =>{
-                if(patient){
-                    var req.session.localVar = patient;
-                    res.redirect("/update/patient");
+            .then(user=>{
+                if(user){
+                    res.render("updateDetails",{patient:user});
                 }
                 else{
-                    req.flash({"error_msg":"Patient not found!!"});
-                    res.render("search");
+                    req.flash("error_msg","Pateint Not found!!");
+                    res.redirect("update");
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err=>console.log(err));
 });
-app.get("/update/patient",(req,res)=>{
-    const patient = req.session.localVar;
-   res.render("update",{patient}); 
+app.get("/update/:token",(req,res)=>{
+    res.render("dashboard");
+});
+app.post("/update/:token",(req,res)=>{
+    Patient.updateOne({ssnid:req.params.token},[
+        { 
+            $set:{
+            name : req.body.name,
+            age : req.body.age,
+            address : req.body.address,
+            city : req.body.city,
+            state : req.body.state,
+            status : req.body.newstatus,
+            typeOfBed : req.body.newtypeofbed,
+            dateOfAdmission : req.body.newdateofadmission
+            }
+        }
+        //,
+        // {
+        //     $set:{
+        //         status : { $ifNull: [req.body.newstatus,req.body.status] },
+        //         typeOfBed : { $ifNull: [req.body.newtypeofbed,req.body.typeOfBed] },
+        //         dateOfAdmission : { $ifNull: [req.body.newdateofadmission,req.body.dateOfAdmission] }
+        //     }
+        // }
+    ],
+    (err,user)=>{
+        if(user){
+            req.flash("success_msg","Successfully Updated !!");
+            res.render("dashboard");
+        }
+        else throw err;
+    });
 });
 app.listen(PORT,(req,res)=>{
   console.log(`server started in port ${PORT}`);

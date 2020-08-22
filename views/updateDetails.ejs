@@ -9,9 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/css/update.css">
 </head>
 <body>
-    <form method="post" action="/update/patient">
-        <div class="container"> 
-            <%- include("partials/messages.ejs") %>
+    <form method="post" action="/update/<%= patient.ssnid %>">
+        <div class="container">
             <h3 class="text-center">Patient Details</h3>
             <hr>
             <%- include('partials/messages.ejs') %>
@@ -27,11 +26,11 @@
             <br>
             <label for="dateofadmission"><b>Date Of Admission</b></label>
             <input type="text" value="<%= patient.dateOfAdmission.toDateString().split('-')[0] %>" name="dateofadmission" id="dateofadmission" readonly>
-            <input type="date" name="dateofadmission" id="dateofadmission" >
+            <input type="date" name="newdateofadmission" id="newdateofadmission" >
             <br>
-            <label for="typeOfBed"><b>Type Of Bed</b></label>
+            <label for="typeofbed"><b>Type Of Bed</b></label>
             <input type="text" value="<%= patient.typeOfBed %>" name="typeOfBed" id="typeOfBed" readonly>
-            <select id="typeOfBed" name="typeOfBed" >
+            <select id="newtypeofbed" name="newtypeofbed" >
                 <option value="none" selected disabled hidden>Select an Option</option>
                 <option value="General Ward">General Ward</option>
                 <option value="Semi Sharing">Semi Sharing</option>
@@ -48,13 +47,13 @@
             <input type="text" value="<%= patient.state %>" name="state" id="state" required>
             <br><label for="status"><b>Status</b></label>
             <input type="text" value="<%= patient.status %>" name="status" id="status" readonly>
-            <select id="status" name="status" >
+            <select id="newstatus" name="newstatus" >
                 <option value="none" selected disabled hidden>Select an Option</option>
                 <option value="Active">Active</option>
                 <option value="Discharged">Discharged</option>
             </select>
             <br>
-            <button type="submit" class="btn btn-success" onClick="">update</button>
+            <button type="submit" class="btn btn-success" >update</button>
             <% } %>
         </div>
     </form>
