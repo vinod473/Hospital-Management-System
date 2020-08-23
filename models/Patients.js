@@ -12,7 +12,12 @@ const patientSchema = mongoose.Schema({
     address: String,
     city: String,
     state: String,
-    status:String
+    status:String,
+    medicines: [{
+                    name : String,
+                    price : Number,
+                    quantity : Number
+            }]
 });
 
 module.exports = mongoose.model("Patients",patientSchema);

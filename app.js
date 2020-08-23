@@ -201,9 +201,6 @@ app.post("/update",(req,res)=>{
             })
             .catch(err=>console.log(err));
 });
-app.get("/update/:token",(req,res)=>{
-    res.render("dashboard");
-});
 app.post("/update/:token",(req,res)=>{
     Patient.updateOne({ssnid:req.params.token},[
         { 
@@ -252,9 +249,6 @@ app.post("/delete",(req,res)=>{
             })
             .catch(err=>console.log(err));
 });
-app.get("/delete/:token",(req,res)=>{
-    res.render("dashboard");
-});
 app.post("/delete/:token",(req,res)=>{
         Patient.deleteOne({ssnid:req.params.token})
             .then(doc=>{
@@ -300,6 +294,39 @@ app.post("/addMedicine",(req,res)=>{
                             })
                             .catch(err=>console.log(err));
                 }
+            })
+            .catch(err=>console.log(err));
+});
+
+app.get("/billing",(req,res)=>{
+    res.render("search");
+});
+app.post("/billing",(req,res)=>{
+    const ssnid = req.body.ssnid;
+    Patient.findOne({ssnid:ssnid})
+            .then(user=>{
+                if(user){
+                    res.render("billing",{patient:user});
+                }
+                else{
+                    res.render("billing",{"error_msg":"Pateint Not found!!"});
+                }
+            })
+            .catch(err=>console.log(err));
+});
+app.post("/billing/:token",(req,res)=>{
+    const ssnid = req.params.token;
+    Patient.findOne({ssnid:ssnid})
+            .then(user=>{
+                Patient.updateOne({ssnid:ssnid},{
+                        $set:{
+                            status : "Discharged"
+                        }
+                    })
+                    .then(ob=>{
+                        res.render("dashboard",{"success_msg":"Patient Discharged.."});
+                    })
+                    .catch(err=>console.log(err));
             })
             .catch(err=>console.log(err));
 });
