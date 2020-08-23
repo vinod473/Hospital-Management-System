@@ -268,6 +268,41 @@ app.post("/delete/:token",(req,res)=>{
             })
             .catch(err=>console.log(err));
 });
+app.get("/addMedicine",(req,res)=>{
+    res.render("addMedicine");
+});
+app.post("/addMedicine",(req,res)=>{
+    const name = req.body.medicinename;
+    const quantity = req.body.medicinequantity;
+    const price = req.body.medicineprice;
+    Medicine.findOne({name:name})
+            .then(med=>{
+                if(med){
+                    Medicine.updateOne({name:name},{
+                    $set:{
+                            name : name,
+                            price : price,
+                            quantity : med.quantity + parseInt(quantity,10)
+                        }
+                    })
+                    .then(ob=>{
+                        req.flash("success_msg","Successfully Updated..");
+                        res.redirect("addMedicine");
+                    })
+                    .catch(err=>console.log(err));
+                }
+                else{
+                    const newMed = new Medicine({name,price,quantity});
+                    newMed.save()
+                            .then(medObj=>{
+                                req.flash("success_msg","Medicine Added..");
+                                res.redirect("addMedicine");
+                            })
+                            .catch(err=>console.log(err));
+                }
+            })
+            .catch(err=>console.log(err));
+});
 app.listen(PORT,(req,res)=>{
   console.log(`server started in port ${PORT}`);
 });
