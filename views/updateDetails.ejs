@@ -6,52 +6,74 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Pateint Details</title>
-    <link rel="stylesheet" type="text/css" href="/css/update.css">
+    <link rel="stylesheet" type="text/css" href="/css/updateDetails.css">
 </head>
 <body>
     <form method="post" action="/update/<%= patient.ssnid %>">
         <div class="container">
             <h3 class="text-center">Patient Details</h3>
             <hr>
+            <%- include('partials/sidenavbar.ejs') %>
             <%- include('partials/messages.ejs') %>
             <% if( patient ){ %>
-            <label for="ssnid"><b>SSN ID</b></label>
-            <input type="number" value="<%= patient.ssnid %>" name="ssnid" id="ssnid" required>
-            <br>
+            <div class="row">
+                <label for="ssnid"><b>SSN ID</b></label>
+                <div class="inputbox">
+                    <input type="number" value="<%= patient.ssnid %>" name="ssnid" id="ssnid" required>
+                </div>
+            </div>
             <label for="name"><b>Name</b></label>
-            <input type="text" value="<%= patient.name %>" name="name" id="name" required>
-            <br>
+            <div class="inputbox">
+                <input type="text" value="<%= patient.name %>" name="name" id="name" required>
+            </div>
+            
             <label for="age"><b>Age</b></label>
-            <input type="number" value="<%= patient.age %>" name="age" id="age" required>
-            <br>
+            <div class="inputbox">
+                <input type="number" value="<%= patient.age %>" name="age" id="age" required>
+            </div>
+
             <label for="dateofadmission"><b>Date Of Admission</b></label>
-            <input type="text" value="<%= patient.dateOfAdmission.toDateString().split('-')[0] %>" name="dateofadmission" id="dateofadmission" readonly>
-            <input type="date" name="newdateofadmission" id="newdateofadmission" >
+            <div class="inputbox">
+                <input type="text" value="<%= patient.dateOfAdmission.toDateString().split('-')[0] %>" name="dateofadmission" id="dateofadmission" readonly>
+                <input type="date" name="newdateofadmission" id="newdateofadmission" >
+            </div>
             <br>
             <label for="typeofbed"><b>Type Of Bed</b></label>
+            <div class="inputbox">
             <input type="text" value="<%= patient.typeOfBed %>" name="typeOfBed" id="typeOfBed" readonly>
-            <select id="newtypeofbed" name="newtypeofbed" >
-                <option value="none" selected disabled hidden>Select an Option</option>
-                <option value="General Ward">General Ward</option>
-                <option value="Semi Sharing">Semi Sharing</option>
-                <option value="Single Room">Single Room</option>
-            </select><br>
-            
-            <label for="address"><b>Address</b></label>
-            <input type="text" value="<%= patient.address %>" name="address" id="address" required>
+                <select id="newtypeofbed" name="newtypeofbed" >
+                    <option value="none" selected disabled hidden>Select an Option</option>
+                    <option value="General Ward">General Ward</option>
+                    <option value="Semi Sharing">Semi Sharing</option>
+                    <option value="Single Room">Single Room</option>
+                </select>
+            </div>
             <br>
+            <label for="address"><b>Address</b></label>
+            <div class="inputbox">
+                <input type="text" value="<%= patient.address %>" name="address" id="address" required>
+            </div>
+            <br>
+            
             <label for="city"><b>City</b></label>
-            <input type="text" value="<%= patient.city %>" name="city" id="city" required>
+            <div class="inputbox">
+                <input type="text" value="<%= patient.city %>" name="city" id="city" required>
+            </div>
             <br>
             <label for="state"><b>State</b></label>
-            <input type="text" value="<%= patient.state %>" name="state" id="state" required>
-            <br><label for="status"><b>Status</b></label>
-            <input type="text" value="<%= patient.status %>" name="status" id="status" readonly>
-            <select id="newstatus" name="newstatus" >
-                <option value="none" selected disabled hidden>Select an Option</option>
-                <option value="Active">Active</option>
-                <option value="Discharged">Discharged</option>
-            </select>
+            <div class="inputbox">
+                <input type="text" value="<%= patient.state %>" name="state" id="state" required>
+            </div>
+            <br>
+            <label for="status"><b>Status</b></label>
+            <div class="inputbox">
+                <input type="text" value="<%= patient.status %>" name="status" id="status" readonly>
+                <select id="newstatus" name="newstatus" >
+                    <option value="none" selected disabled hidden>Select an Option</option>
+                    <option value="Active">Active</option>
+                    <option value="Discharged">Discharged</option>
+                </select>
+            </div>
             <br>
             <button type="submit" class="btn btn-success" >update</button>
             <% } %>

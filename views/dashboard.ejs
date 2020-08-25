@@ -13,6 +13,7 @@
 
 <body>
     <div class="container">
+        <%- include('partials/sidenavbar.ejs') %>
         <%- include('partials/messages.ejs') %>
         <div class="wrap">
           <div>
@@ -36,7 +37,7 @@
           <div class="col-sm-4">
             <div class="card">
               <div class="card-body text-center">
-                <h5 class="card-title">Show all patients</h5>
+                <h5 class="card-title">View all patients</h5>
                 <a href="/patients" class="btn btn-secondary">All Patients</a>
               </div>
             </div>
@@ -68,8 +69,8 @@
           <div class="col-sm-4">
             <div class="card">
               <div class="card-body text-center">
-                <h5 class="card-title">Delete a patient</h5>
-                <a href="/delete" class="btn btn-primary">Delete</a>
+                <h5 class="card-title">Add Medicine</h5>
+                <a href="/addMedicine" class="btn btn-warning">Add </a>
               </div>
             </div>
           </div>

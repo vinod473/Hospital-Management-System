@@ -13,10 +13,14 @@
 
 <body>
   <div class="container">
-    <h1 class="text-center"> Records!! </h1>
+    <h1 class="text-center"> Records </h1>
+    <hr>
+    <%- include("partials/sidenavbar.ejs") %>
+    <%- include("partials/messages.ejs") %>
   <div class="table-data">
     <table border="1" >
-            <tr>
+            <% if( patients.length>0 ){%>
+              <tr>
                 <th scope="col">#</th>
                 <th scope="col">SSN ID</th>
                 <th scope="col">Name</th>
@@ -27,8 +31,7 @@
                 <th scope="col">City</th>
                 <th scope="col">State</th>
                 <th scope="col">Status</th>
-            </tr>
-            <% if( patients.length>0 ){%>
+              </tr>
               <% for(var i=0;i<patients.length;i++){ %>
               <tr>
                 <th scope="row"> <%= i+1 %></th>
@@ -45,7 +48,7 @@
               <% } %>
             <% } %>
             <% if( patients.length==0 ){ %>
-              <h3 class="no-record">No records Found !!</h3>
+              <h3 class="no-record">Sorry!! No Patients Found </h3>
             <% } %>
     </table>
     </div>

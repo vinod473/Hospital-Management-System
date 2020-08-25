@@ -11,13 +11,14 @@
 <body>
     <form method="post">
         <div class="container">
-            <h3>Patient Registration</h3>
+            <h2 class="text-center text-primary">Patient Registration</h3>
             <p>Please fill in this form to register a patient.</p>
             <hr>
+            <%- include('partials/sidenavbar.ejs') %>
             <%- include('partials/messages.ejs') %>
             <label for="ssnid"><b>SSN ID</b></label>
             <input type="number" placeholder="Enter SSN ID" name="ssnid" id="ssnid" required>
-            
+            <br>
             <label for="name"><b>Name</b></label>
             <input type="text" placeholder="Enter Name " name="name" id="name" required>
             

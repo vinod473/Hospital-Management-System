@@ -6,13 +6,15 @@ body {
     box-sizing: border-box;
 }
 .container {
+    margin-left:200px;
+    width:75%;
     padding: 16px;
     background-color: white;
 }
 input,select {
     width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
+    padding: 12px;
+    margin: 3px 0 22px 0;
     display: inline-block;
     border: none;
     background: #f1f1f1;
@@ -28,12 +30,13 @@ hr {
 .registerbtn {
     background-color: #4CAF50;
     color: white;
-    padding: 16px 20px;
-    margin: 8px 0;
+    padding: 8px 12px;
+    margin: 8px 50%;
     border: none;
     cursor: pointer;
     text-align:center;
-    opacity: 0.9;
+    opacity: 0.92;
+    border-radius: 2px;
 }
 .registerbtn:hover{
     opacity:1;

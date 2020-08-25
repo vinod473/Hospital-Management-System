@@ -107,9 +107,6 @@ app.post('/login',(req,res,next)=>{
         failureFlash: true,
     })(req,res,next);
 });
-app.get('/register',(req,res,next)=>{
-    res.render('register');
-});
 const {ensureAuthenticated} = require("./config/auth.js");
 app.get('/dashboard',ensureAuthenticated,(req,res)=>{
     res.render('dashboard');
@@ -118,8 +115,7 @@ app.get('/dashboard',ensureAuthenticated,(req,res)=>{
 //logout
 app.get('/logout',ensureAuthenticated,(req,res)=>{
     req.logout();
-    req.flash('success_msg','Successfully Logged out!');
-    res.redirect('/login');
+    res.render('login',{'success_msg':'Successfully Logged out!'});
 });
 app.get("/patients",(req,res)=>{
    Patient.find({})
@@ -128,7 +124,7 @@ app.get("/patients",(req,res)=>{
    })
    .catch(err=>{console.log(err)});
 });
-app.get("/registerPatient",ensureAuthenticated,(req,res)=>{
+app.get("/registerPatient",(req,res)=>{
    res.render("registerPatient"); 
 });
 app.post("/registerPatient",(req,res)=>{
@@ -233,7 +229,7 @@ app.post("/update/:token",(req,res)=>{
     });
 });
 app.get("/delete",(req,res)=>{
-    res.render("update");
+    res.render("delete");
 });
 app.post("/delete",(req,res)=>{
     const ssnid = req.body.ssnid;
@@ -243,8 +239,7 @@ app.post("/delete",(req,res)=>{
                     res.render("deletePatient",{patient:user});
                 }
                 else{
-                    req.flash("error_msg","Pateint Not found!!");
-                    res.redirect("delete");
+                    res.render("delete",{"error_msg":"Pateint Not found!!"});
                 }
             })
             .catch(err=>console.log(err));
@@ -253,8 +248,7 @@ app.post("/delete/:token",(req,res)=>{
         Patient.deleteOne({ssnid:req.params.token})
             .then(doc=>{
                 if(doc.deletedCount==1){
-                    req.flash("success_msg","Patient Successfully deleted!!");
-                    res.render("dashboard");
+                    res.render("dashboard",{"success_msg":"Patient Successfully deleted!!"});
                 }
                 else{
                     console.log("delete error");

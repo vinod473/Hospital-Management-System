@@ -14,8 +14,9 @@
 <body>
     <form method="post">
         <div class="container">
+            <%- include("partials/sidenavbar.ejs") %>
             <%- include("partials/messages.ejs") %>
-                <h1 class="display-4">Search</h1>
+                <h1 class="display-6 text-info">Search Patient</h1>
                 <hr class="my-4">
                 <label><b>SSN ID</b></label>
                 <input type="number" placeholder="Enter SSN ID" name="ssnid" id="ssnid" required>
