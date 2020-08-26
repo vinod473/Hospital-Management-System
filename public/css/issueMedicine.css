@@ -1,0 +1,21 @@
+.container{
+    width:60%;
+    margin-top:50px;
+}
+.hr{
+    margin-top: 2px;
+}
+.key{
+    width:150px;
+}
+.value{
+    width:200px;
+    color:blue;
+}
+.h3{
+    color:red;
+}
+button{
+    width:110px;
+    font-size:15px;
+}

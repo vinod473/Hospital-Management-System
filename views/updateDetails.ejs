@@ -16,66 +16,54 @@
             <%- include('partials/sidenavbar.ejs') %>
             <%- include('partials/messages.ejs') %>
             <% if( patient ){ %>
-            <div class="row">
                 <label for="ssnid"><b>SSN ID</b></label>
-                <div class="inputbox">
-                    <input type="number" value="<%= patient.ssnid %>" name="ssnid" id="ssnid" required>
-                </div>
-            </div>
-            <label for="name"><b>Name</b></label>
-            <div class="inputbox">
-                <input type="text" value="<%= patient.name %>" name="name" id="name" required>
-            </div>
-            
-            <label for="age"><b>Age</b></label>
-            <div class="inputbox">
-                <input type="number" value="<%= patient.age %>" name="age" id="age" required>
-            </div>
+                <input type="number" value="<%= patient.ssnid %>" name="ssnid" id="ssnid" required>
+                <br>
 
-            <label for="dateofadmission"><b>Date Of Admission</b></label>
-            <div class="inputbox">
+                <label for="name"><b>Name</b></label>
+                <input type="text" value="<%= patient.name %>" name="name" id="name" required>
+                <br>
+                
+                <label for="age"><b>Age</b></label>
+                <input type="number" value="<%= patient.age %>" name="age" id="age" required>
+                <br>
+
+                <label for="dateofadmission"><b>Date Of Admission</b></label>
                 <input type="text" value="<%= patient.dateOfAdmission.toDateString().split('-')[0] %>" name="dateofadmission" id="dateofadmission" readonly>
                 <input type="date" name="newdateofadmission" id="newdateofadmission" >
-            </div>
-            <br>
-            <label for="typeofbed"><b>Type Of Bed</b></label>
-            <div class="inputbox">
-            <input type="text" value="<%= patient.typeOfBed %>" name="typeOfBed" id="typeOfBed" readonly>
+                <br>
+
+                <label for="typeofbed"><b>Type Of Bed</b></label>
+                <input type="text" value="<%= patient.typeOfBed %>" name="typeOfBed" id="typeOfBed" readonly>
                 <select id="newtypeofbed" name="newtypeofbed" >
                     <option value="none" selected disabled hidden>Select an Option</option>
                     <option value="General Ward">General Ward</option>
                     <option value="Semi Sharing">Semi Sharing</option>
                     <option value="Single Room">Single Room</option>
                 </select>
-            </div>
-            <br>
-            <label for="address"><b>Address</b></label>
-            <div class="inputbox">
+                <br>
+
+                <label for="address"><b>Address</b></label>
                 <input type="text" value="<%= patient.address %>" name="address" id="address" required>
-            </div>
-            <br>
-            
-            <label for="city"><b>City</b></label>
-            <div class="inputbox">
+                <br>
+                
+                <label for="city"><b>City</b></label>
                 <input type="text" value="<%= patient.city %>" name="city" id="city" required>
-            </div>
-            <br>
-            <label for="state"><b>State</b></label>
-            <div class="inputbox">
+                <br>
+
+                <label for="state"><b>State</b></label>
                 <input type="text" value="<%= patient.state %>" name="state" id="state" required>
-            </div>
-            <br>
-            <label for="status"><b>Status</b></label>
-            <div class="inputbox">
+                <br>
+
+                <label for="status"><b>Status</b></label>
                 <input type="text" value="<%= patient.status %>" name="status" id="status" readonly>
-                <select id="newstatus" name="newstatus" >
-                    <option value="none" selected disabled hidden>Select an Option</option>
-                    <option value="Active">Active</option>
-                    <option value="Discharged">Discharged</option>
-                </select>
-            </div>
-            <br>
-            <button type="submit" class="btn btn-success" >update</button>
+                    <select id="newstatus" name="newstatus" >
+                        <option value="none" selected disabled hidden>Select an Option</option>
+                        <option value="Active">Active</option>
+                        <option value="Discharged">Discharged</option>
+                    </select>
+                <br>
+                <button type="submit" class="btn btn-success" >update</button>
             <% } %>
         </div>
     </form>

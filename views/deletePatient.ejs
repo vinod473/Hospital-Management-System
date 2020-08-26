@@ -16,37 +16,37 @@
             <%- include('partials/sidenavbar.ejs') %>
             <%- include('partials/messages.ejs') %>
             <% if( patient ){ %>
-            <label for="ssnid"><b>SSN ID</b></label>
-            <input type="number" value="<%= patient.ssnid %>" name="ssnid" id="ssnid" required>
-            <br>
-            <label for="name"><b>Name</b></label>
-            <input type="text" value="<%= patient.name %>" name="name" id="name" required>
-            <br>
-            
-            <label for="age"><b>Age</b></label>
-            <input type="number" value="<%= patient.age %>" name="age" id="age" required>
-            <br>
-            
-            <label for="dateofadmission"><b>Date Of Admission</b></label>
-            <input type="text" value="<%= patient.dateOfAdmission.toDateString().split('-')[0] %>" name="dateofadmission" id="dateofadmission" readonly>
-            <br>
-            
-            <label for="typeofbed"><b>Type Of Bed</b></label>
-            <input type="text" value="<%= patient.typeOfBed %>" name="typeOfBed" id="typeOfBed" readonly>
-            <br>
-            
-            <label for="address"><b>Address</b></label>
-            <input type="text" value="<%= patient.address %>" name="address" id="address" required>
-            <br>
-            <label for="city"><b>City</b></label>
-            <input type="text" value="<%= patient.city %>" name="city" id="city" required>
-            <br>
-            <label for="state"><b>State</b></label>
-            <input type="text" value="<%= patient.state %>" name="state" id="state" required>
-            <br><label for="status"><b>Status</b></label>
-            <input type="text" value="<%= patient.status %>" name="status" id="status" readonly>
-            <br>
-            <button type="submit" class="btn btn-danger" >Delete</button>
+                <label for="ssnid"><b>SSN ID</b></label>
+                <input type="number" value="<%= patient.ssnid %>" name="ssnid" id="ssnid" required>
+                <br>
+                <label for="name"><b>Name</b></label>
+                <input type="text" value="<%= patient.name %>" name="name" id="name" required>
+                <br>
+                
+                <label for="age"><b>Age</b></label>
+                <input type="number" value="<%= patient.age %>" name="age" id="age" required>
+                <br>
+                
+                <label for="dateofadmission"><b>Date Of Admission</b></label>
+                <input type="text" value="<%= patient.dateOfAdmission.toDateString().split('-')[0] %>" name="dateofadmission" id="dateofadmission" readonly>
+                <br>
+                
+                <label for="typeofbed"><b>Type Of Bed</b></label>
+                <input type="text" value="<%= patient.typeOfBed %>" name="typeOfBed" id="typeOfBed" readonly>
+                <br>
+                
+                <label for="address"><b>Address</b></label>
+                <input type="text" value="<%= patient.address %>" name="address" id="address" required>
+                <br>
+                <label for="city"><b>City</b></label>
+                <input type="text" value="<%= patient.city %>" name="city" id="city" required>
+                <br>
+                <label for="state"><b>State</b></label>
+                <input type="text" value="<%= patient.state %>" name="state" id="state" required>
+                <br><label for="status"><b>Status</b></label>
+                <input type="text" value="<%= patient.status %>" name="status" id="status" readonly>
+                <br>
+                <button type="submit" class="btn btn-danger" >Delete</button>
             <% } %>
         </div>
     </form>

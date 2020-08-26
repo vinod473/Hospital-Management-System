@@ -20,9 +20,9 @@
                 <hr class="my-4">
                 <label><b>SSN ID</b></label>
                 <input type="number" placeholder="Enter SSN ID" name="ssnid" id="ssnid" required>
-                <button type="submit" class="btn btn-primary btn-lg">
+                <a onclick="this.href='/search/'+document.getElementById('ssnid').value" type="submit" class="btn btn-primary btn-sm">
                     Search
-                </button>
+                </a>
     
         </div>
     </form>

@@ -17,14 +17,15 @@
         <div class="container">
             <%- include("partials/sidenavbar.ejs") %>
             <%- include("partials/messages.ejs") %>
-            <h1 class="display-6 text-info">Delete Patient</h1>
+            <h1 class="display-6 text-info">Issue Medicine</h1>
             <hr class="my-4">
-            <label><b>Enter SSN ID:</b></label>
+            <label><b>SSN ID</b></label>
             <input type="number" placeholder="Enter SSN ID" name="ssnid" id="ssnid" required>
-            <a onclick="this.href='/delete/'+document.getElementById('ssnid').value" type="submit"
-                class="btn btn-warning btn-sm">
+            <a onclick="this.href='/issueMedicine/'+document.getElementById('ssnid').value" type="submit"
+                class="btn btn-primary btn-sm">
                 Search
             </a>
+
         </div>
     </form>
     <!-- Script -->

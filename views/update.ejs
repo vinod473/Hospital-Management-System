@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <form method="post">
+    <form>
         <div class="container">
             <%- include("partials/sidenavbar.ejs") %>
             <%- include("partials/messages.ejs") %>
@@ -21,9 +21,9 @@
                 <hr class="my-4">
                 <label><b>Enter SSN ID:</b></label>
                 <input type="number" placeholder="Enter SSN ID" name="ssnid" id="ssnid" required>
-                <button type="submit" class="btn btn-warning btn-sm">
+                <a onclick="this.href='/update/'+document.getElementById('ssnid').value" type="submit" class="btn btn-warning btn-sm">
                     Search
-                </button>
+                </a>
     
         </div>
     </form>

@@ -6,6 +6,8 @@ body {
     box-sizing: border-box;
 }
 .container {
+    width:80%;
+    margin-left: 20%;
     padding: 40px;
     background-color: white;
 }

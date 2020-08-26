@@ -166,8 +166,8 @@ app.post("/registerPatient",(req,res)=>{
 app.get("/search",(req,res)=>{
     res.render("search");
 });
-app.post("/search",(req,res)=>{
-     const ssnid = req.body.ssnid;
+app.get("/search/:token",(req,res)=>{
+     const ssnid = req.params.token;
      Patient.findOne({ssnid:ssnid})
             .then(patient=>{
                 if(patient){
@@ -183,8 +183,8 @@ app.post("/search",(req,res)=>{
 app.get("/update",(req,res)=>{
     res.render("update");
 });
-app.post("/update",(req,res)=>{
-    const ssnid = req.body.ssnid;
+app.get("/update/:token",(req,res)=>{
+    const ssnid = req.params.token;
     Patient.findOne({ssnid:ssnid})
             .then(user=>{
                 if(user){
@@ -231,8 +231,8 @@ app.post("/update/:token",(req,res)=>{
 app.get("/delete",(req,res)=>{
     res.render("delete");
 });
-app.post("/delete",(req,res)=>{
-    const ssnid = req.body.ssnid;
+app.get("/delete/:token",(req,res)=>{
+    const ssnid = req.params.token;
     Patient.findOne({ssnid:ssnid})
             .then(user=>{
                 if(user){
@@ -256,10 +256,10 @@ app.post("/delete/:token",(req,res)=>{
             })
             .catch(err=>console.log(err));
 });
-app.get("/addMedicine",(req,res)=>{
-    res.render("addMedicine");
+app.get("/medicineStore",(req,res)=>{
+    res.render("medicineStore");
 });
-app.post("/addMedicine",(req,res)=>{
+app.post("/medicineStore",(req,res)=>{
     const name = req.body.medicinename;
     const quantity = req.body.medicinequantity;
     const price = req.body.medicineprice;
@@ -284,14 +284,29 @@ app.post("/addMedicine",(req,res)=>{
                     newMed.save()
                             .then(medObj=>{
                                 req.flash("success_msg","Medicine Added..");
-                                res.redirect("addMedicine");
+                                res.redirect("medicineStore");
                             })
                             .catch(err=>console.log(err));
                 }
             })
             .catch(err=>console.log(err));
 });
-
+app.get("/issueMedicine",(req,res)=>{
+    res.render("issueMed");
+});
+app.get("/issueMedicine/:token",(req,res)=>{
+    const ssnid = req.params.token;
+    Patient.findOne({ssnid:ssnid})
+            .then(patient=>{
+                if(patient){
+                    res.render("issueMedicine",{patient});
+                }
+                else{
+                    res.render("issueMed",{"error_msg":"Patient not found"});
+                }
+            })
+            .catch(err=>console.log(err));
+});
 app.get("/billing",(req,res)=>{
     res.render("search");
 });
