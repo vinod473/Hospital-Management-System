@@ -17,6 +17,10 @@ const patientSchema = mongoose.Schema({
                     name : String,
                     price : Number,
                     quantity : Number
+            }],
+    tests: [{
+                    name : String,
+                    fee : Number
             }]
 });
 

@@ -14,6 +14,8 @@
 <body>
     <div class="container" >
         <h1>Invoice</h1>
+        <form method="post">
+            <% var total = 0; %>
         <table>
             <tr>
                 <th>Name</th>
@@ -21,18 +23,35 @@
                 <th>Quantity</th>
                 <th>Total</th>
             </tr>
-            <% const medicineList = patient.medicine; %>
-            <% for(var i=0;i<medicineList.length();i++){ %>
-            <tr>
-                <td><%= medicineList[i].name %></td>
-                <td><%= medicineList[i].price %></td>
-                <td><%= medicineList[i].quantity %></td>
-                <td><%= medicineList[i].quantity * medicineList[i].price %></td>
-            </tr>
+            <% if(patient.medicines.length > 0){ %> 
+                
+                <% for(var i=0;i<patient.medicines.length;i++){ %>
+                    <tr>
+                        <td><%= patient.medicines[i].name %></td>
+                        <td><%= patient.medicines[i].price %></td>
+                        <td><%= patient.medicines[i].quantity %></td>
+                        <td><%= patient.medicines[i].price * patient.medicines[i].quantity %></td>
+                    </tr>
+                    <% total += patient.medicines[i].price * patient.medicines[i].quantity %>
+                <% } %>
+                <% for(var i=0;i<patient.tests.length;i++){ %>
+                    <tr>
+                        <td><%= patient.tests[i].name %></td>
+                        <td><%= patient.tests[i].fee %></td>
+                        <td> 1 </td>
+                        <td><%= patient.tests[i].fee %></td>
+                    </tr>
+                    <% total += patient.tests[i].fee %>
+                <% } %>
+                
             <% } %>
         </table>
+        <div style="float:right">
+            <h3 class="text-danger">Total: <%= total %></h3>
+        </div>
+        <button type="submit" class="btn btn-success">Generate Bill</button>
+        </form>
         <hr>
-        
     </div>
     
     <!-- Script -->

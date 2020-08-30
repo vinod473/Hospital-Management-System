@@ -308,10 +308,10 @@ app.get("/issueMedicine/:token",(req,res)=>{
             .catch(err=>console.log(err));
 });
 app.get("/billing",(req,res)=>{
-    res.render("search");
+    res.render("billingSearch");
 });
-app.post("/billing",(req,res)=>{
-    const ssnid = req.body.ssnid;
+app.get("/billing/:token",(req,res)=>{
+    const ssnid = req.params.token;
     Patient.findOne({ssnid:ssnid})
             .then(user=>{
                 if(user){
@@ -338,6 +338,48 @@ app.post("/billing/:token",(req,res)=>{
                     .catch(err=>console.log(err));
             })
             .catch(err=>console.log(err));
+});
+app.get("/addMedicine/:token",(req,res)=>{
+    res.render("add",{ssnid:req.params.token});
+});
+app.post("/addMedicine/:token",(req,res)=>{
+    const name = req.body.medicinename;
+    const price = req.body.medicineprice;
+    const quantity = req.body.medicinequantity;
+    const ssnid = req.params.token;
+    Patient.findOneAndUpdate({ssnid:ssnid},{
+            $push: {
+                "medicines" : {
+                    name: name,
+                    quantity: quantity,
+                    price : price
+                }
+            }
+        },{new:true},(err,patient)=>{
+            if(err)
+                console.log(err);
+            res.render("issueMedicine",{patient,"success_msg":"Medicine Inserted Successfully"});
+        });
+});
+app.get("/addTest/:token",(req,res)=>{
+    res.render("addTest",{ssnid:req.params.token});
+});
+app.post("/addTest/:token",(req,res)=>{
+    const name = req.body.testname;
+    const fee = req.body.testfee;
+    const ssnid = req.params.token;
+    Patient.findOneAndUpdate({ssnid:ssnid},{
+            $push: {
+                "tests" : {
+                    name: name,
+                    fee : fee
+                }
+            }
+        },{new:true},(err,patient)=>{
+            if(err)
+                console.log(err);
+            res.render("issueMedicine",{patient,"success_msg":"Test Inserted Successfully"});
+        });
 });
 app.listen(PORT,(req,res)=>{
   console.log(`server started in port ${PORT}`);

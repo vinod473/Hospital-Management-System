@@ -19,7 +19,7 @@
 
         <% if(patient){ %>
             <div class="row">
-                <div class="key">
+                <div class="key" id="ssnid">
                     <b>SSN ID:</p></b>
                 </div>
                 <div class="value">
@@ -51,17 +51,38 @@
                 </div>
             </div>
             <hr>
-            <button onclick="inputbox()">Add Medicine</button>
+            <a <a onclick="this.href='/addMedicine/<%= patient.ssnid%>'" type="submit"
+            class="btn btn-warning btn-sm">Add Medicine</a>
+            <table class="table table-stripped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Medicine Name</th>
+                        <th>Quantity</th>
+                    </tr>
+                    <% for(var i=0;i<patient.medicines.length;i++){ %>
+                        <tr>
+                            <td><%= patient.medicines[i].name %></td>
+                            <td><%= patient.medicines[i].quantity %></td>
+                        </tr>
+                    <% } %>
+                </thead>
+            </table>
+            <hr>
+            <a <a onclick="this.href='/addTest/<%= patient.ssnid%>'" type="submit"
+                class="btn btn-warning btn-sm">Add Test</a>
                 <table class="table table-stripped table-bordered">
                     <thead>
                         <tr>
-                            <th>Medicine Name</th>
-                            <th>Quantity</th>
+                            <th>Test Name</th>
                         </tr>
+                        <% for(var i=0;i<patient.tests.length;i++){ %>
+                            <tr>
+                                <td><%= patient.tests[i].name %></td>
+                            </tr>
+                        <% } %>
                     </thead>
                 </table>
-            <hr>
-            <button>Add Test</button>
+                <hr>
         <% } %>
         <% if(!patient){ %>
             <div>
@@ -71,13 +92,6 @@
 
     </div>
     <!-- Script -->
-    <script>
-        function inputbox(){
-            <div>
-
-            </div>
-        }
-    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
