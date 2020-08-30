@@ -10,10 +10,10 @@
 </head>
 <body>
     <form >
+        <%- include('partials/sidenavbar.ejs') %>
         <div class="container">
             <h3 class="text-center">Patient Details</h3>
             <hr>
-            <%- include('partials/sidenavbar.ejs') %>
             <%- include('partials/messages.ejs') %>
             <% if( patient ){ %>
             <label for="ssnid"><b>SSN ID</b></label>

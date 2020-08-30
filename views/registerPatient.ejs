@@ -10,11 +10,11 @@
 </head>
 <body>
     <form method="post">
+        <%- include('partials/sidenavbar.ejs') %>
         <div class="container">
             <h2 class="text-center text-primary">Patient Registration</h3>
             <p>Please fill in this form to register a patient.</p>
             <hr>
-            <%- include('partials/sidenavbar.ejs') %>
             <%- include('partials/messages.ejs') %>
             <label for="ssnid"><b>SSN ID</b></label>
             <input type="number" placeholder="Enter SSN ID" name="ssnid" id="ssnid" required>
@@ -44,14 +44,7 @@
             
             <label for="state"><b>State</b></label>
             <input type="text" placeholder="Enter State" name="state" id="state" required>
-            
-            <label for="status"><b>Status</b></label>
-            <select id="status" name="status" required>
-                <option value="none" selected disabled hidden>Select an Option</option> 
-                <option value="Active">Active</option>
-                <option value="Discharged">Discharged</option>
-            </select>
-            
+           
             <button type="submit" class="registerbtn">Register</button>
         </div>
     </form>

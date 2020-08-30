@@ -137,8 +137,8 @@ app.post("/registerPatient",(req,res)=>{
     const address = req.body.address;
     const city = req.body.city;
     const state = req.body.state;
-    const status = req.body.status;
-    if(!ssnid || !name || !age || !dateOfAdmission || !typeOfBed || !address || !city || !state || !status ){
+    const status = "Active";
+    if(!ssnid || !name || !age || !dateOfAdmission || !typeOfBed || !address || !city || !state){
         errors.push({msg:"Please enter all details!!"});
     }
     if(errors.length>0){
