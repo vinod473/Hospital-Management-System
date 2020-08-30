@@ -117,14 +117,14 @@ app.get('/logout',ensureAuthenticated,(req,res)=>{
     req.logout();
     res.render('login',{'success_msg':'Successfully Logged out!'});
 });
-app.get("/patients",(req,res)=>{
+app.get("/patients",ensureAuthenticated,(req,res)=>{
    Patient.find({})
    .then(patients=>{
        res.render("patients",{patients});
    })
    .catch(err=>{console.log(err)});
 });
-app.get("/registerPatient",(req,res)=>{
+app.get("/registerPatient",ensureAuthenticated,(req,res)=>{
    res.render("registerPatient"); 
 });
 app.post("/registerPatient",(req,res)=>{
@@ -163,7 +163,7 @@ app.post("/registerPatient",(req,res)=>{
             .catch(err=>console.log(err));
     }
 });
-app.get("/search",(req,res)=>{
+app.get("/search",ensureAuthenticated,(req,res)=>{
     res.render("search");
 });
 app.get("/search/:token",(req,res)=>{
@@ -180,7 +180,7 @@ app.get("/search/:token",(req,res)=>{
             })
             .catch(err=>console.log(err));
 });
-app.get("/update",(req,res)=>{
+app.get("/update",ensureAuthenticated,(req,res)=>{
     res.render("update");
 });
 app.get("/update/:token",(req,res)=>{
@@ -228,7 +228,7 @@ app.post("/update/:token",(req,res)=>{
         else throw err;
     });
 });
-app.get("/delete",(req,res)=>{
+app.get("/delete",ensureAuthenticated,(req,res)=>{
     res.render("delete");
 });
 app.get("/delete/:token",(req,res)=>{
@@ -256,7 +256,7 @@ app.post("/delete/:token",(req,res)=>{
             })
             .catch(err=>console.log(err));
 });
-app.get("/medicineStore",(req,res)=>{
+app.get("/medicineStore",ensureAuthenticated,(req,res)=>{
     res.render("medicineStore");
 });
 app.post("/medicineStore",(req,res)=>{
@@ -291,7 +291,7 @@ app.post("/medicineStore",(req,res)=>{
             })
             .catch(err=>console.log(err));
 });
-app.get("/issueMedicine",(req,res)=>{
+app.get("/issueMedicine",ensureAuthenticated,(req,res)=>{
     res.render("issueMed");
 });
 app.get("/issueMedicine/:token",(req,res)=>{
@@ -307,7 +307,7 @@ app.get("/issueMedicine/:token",(req,res)=>{
             })
             .catch(err=>console.log(err));
 });
-app.get("/billing",(req,res)=>{
+app.get("/billing",ensureAuthenticated,(req,res)=>{
     res.render("billingSearch");
 });
 app.get("/billing/:token",(req,res)=>{
@@ -339,7 +339,7 @@ app.post("/billing/:token",(req,res)=>{
             })
             .catch(err=>console.log(err));
 });
-app.get("/addMedicine/:token",(req,res)=>{
+app.get("/addMedicine/:token",ensureAuthenticated,(req,res)=>{
     res.render("add",{ssnid:req.params.token});
 });
 app.post("/addMedicine/:token",(req,res)=>{
@@ -361,7 +361,7 @@ app.post("/addMedicine/:token",(req,res)=>{
             res.render("issueMedicine",{patient,"success_msg":"Medicine Inserted Successfully"});
         });
 });
-app.get("/addTest/:token",(req,res)=>{
+app.get("/addTest/:token",ensureAuthenticated,(req,res)=>{
     res.render("addTest",{ssnid:req.params.token});
 });
 app.post("/addTest/:token",(req,res)=>{
