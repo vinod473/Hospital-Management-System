@@ -9,7 +9,7 @@ body {
     width:80%;
     margin-left: 20%;
     padding: 40px;
-    background-color: white;
+    background-color: grey;
 }
 input, select {
     text-align:center;
@@ -28,15 +28,12 @@ hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
 }
-.registerbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    text-align:center;
-    opacity: 0.9;
+.btn {
+    background-color: rgba(188, 236, 17, 0.741);
+    opacity:0.9;
+}
+.btn:hover{
+    opacity:1;
 }
 label{
     width:200px;

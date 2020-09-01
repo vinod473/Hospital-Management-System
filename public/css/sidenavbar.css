@@ -1,5 +1,8 @@
 body {
   font-family: "Lato", sans-serif;
+  background-image: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url('../images/med_background.jpg');
+  width:100%;
+  background-size: cover;
 }
 
 .sidebar {
@@ -51,6 +54,7 @@ body {
 
 #main {
   padding: 16px;
+  display: inline;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */

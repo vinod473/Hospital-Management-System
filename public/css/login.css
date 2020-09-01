@@ -1,14 +1,19 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: ghostwhite;
+    background-image: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url('../images/med_background.jpg');
+    width:100%;
+    background-size: cover;
 }
 * {
     box-sizing: border-box;
 }
 .container {
-    padding: 16px;
-    background-color: white;
+    margin-top: 50px;
+    padding: 15px;
+    background-color: rgb(250, 243, 243);
     width :30%;
+    border-radius: 10px;
+    opacity: 0.9;
 }
 input,select {
     width: 100%;
@@ -16,26 +21,21 @@ input,select {
     margin: 5px 0 22px 0;
     display: inline-block;
     border: none;
-    background: #f1f1f1;
+    background: #e1dada;
+    border-radius: 5px;
 }
 input:focus,select:focus {
-    background-color: #ddd;
+    background-color: rgb(177, 170, 170);
     outline: none;
 }
 hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
 }
-.registerbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    text-align:center;
-    opacity: 0.9;
+.btn {
+    background-color: rgba(188, 236, 17, 0.741);
+    opacity:0.9;
 }
-.registerbtn:hover{
+.btn:hover{
     opacity:1;
 }

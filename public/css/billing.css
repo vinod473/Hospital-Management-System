@@ -15,5 +15,24 @@ tr:nth-child(even) {
 }
 h1{
    text-align:center;
-   color:blue;
+   color:rgb(171, 12, 12);;
+}
+
+.container{
+  width:80%;
+  margin-left:15%;
+  background-color: rgb(250, 243, 243);
+  opacity: 0.9;
+   border-radius: 7px;
+}
+.total{
+  float: right;
+  margin-right: 90px;
+  margin-top:20px;
+}
+.btn{
+  margin-top: 20px;
+}
+.totalleft{
+  margin-right: 30px;
 }

@@ -3,7 +3,6 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
-
 td, th {
   border: 1px solid #dddddd;
   text-align: left;
@@ -17,9 +16,13 @@ tr:nth-child(even) {
   text-align:center;
 }
 .text-center{
-  color:blue;
+  color:rgb(171, 12, 12);
 }
 .container{
   width:80%;
   margin-left:15%;
+  background-color: rgb(250, 243, 243);
+  opacity: 0.9;
+   border-radius: 10px;
+   padding:30px;
 }

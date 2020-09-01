@@ -1,0 +1,71 @@
+.my-nav {
+  background-color: rgb(197, 35, 25) !important;
+  min-height: 70px;
+}
+
+.favicon {
+  color: #c52319;
+}
+
+.jumbotron {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
+    ),
+    url("../images/med_background.jpg");
+  background-size: 100%;
+}
+#header {
+  color: rgb(197, 35, 25);
+  font-size: 5rem;
+  margin-top: 4.5rem;
+}
+
+.hotlinks {
+  text-decoration: none !important;
+  color: rgb(197, 35, 25);
+  font-weight: none;
+}
+
+body {
+  font-family: "Signika", sans-serif;
+  font-size: 1.1rem;
+}
+
+hr.style-six {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.headerSub {
+  font-size: 1.6rem;
+  color: rgb(197, 35, 25);
+}
+
+.row-items {
+  text-align: center;
+}
+
+.margin {
+  margin-right: 25px;
+}
+
+.custButton {
+  margin-top: 4px;
+  width: 100px;
+  background-color: white;
+}
+
+.alignment {
+  text-align: center;
+}
+@media screen and (max-width: 525px) {
+  .navbar-collapse {
+    height: 2rem;
+  }
+}
+#login {
+    margin-right:20px;
+}

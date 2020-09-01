@@ -14,7 +14,7 @@
 <body>
     <%- include("partials/sidenavbar.ejs") %>
     <div class="container" >
-        <h1>Invoice</h1>
+        <h1>INVOICE</h1>
         <form method="post">
             <% var total = 0; %>
         <table>
@@ -47,9 +47,17 @@
                 
             <% } %>
         </table>
-        <div style="float:right">
-            <h3 class="text-danger">Total: <%= total %></h3>
-        </div>
+            <div class="total">
+                <h4 class="text-danger">
+                    <span class="totalleft">
+                        Total: 
+                    </span>
+                    <span class="totalright">
+                        <%= total %>
+                    </span>
+                </h4>
+            </div>
+   
         <button type="submit" class="btn btn-success">Generate Bill</button>
         </form>
         <hr>
