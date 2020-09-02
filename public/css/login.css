@@ -10,8 +10,8 @@ body {
 .container {
     margin-top: 50px;
     padding: 15px;
-    background-color: rgb(250, 243, 243);
-    width :30%;
+    background-color: rgb(243, 243, 250);
+    width :400px;
     border-radius: 10px;
     opacity: 0.9;
 }
@@ -33,7 +33,7 @@ hr {
     margin-bottom: 25px;
 }
 .btn {
-    background-color: rgba(188, 236, 17, 0.741);
+    background-color: rgba(17, 236, 43, 0.932);
     opacity:0.9;
 }
 .btn:hover{

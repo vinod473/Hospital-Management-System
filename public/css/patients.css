@@ -19,7 +19,7 @@ tr:nth-child(even) {
   color:rgb(171, 12, 12);
 }
 .container{
-  width:80%;
+  min-width: 1000px;
   margin-left:15%;
   background-color: rgb(250, 243, 243);
   opacity: 0.9;
