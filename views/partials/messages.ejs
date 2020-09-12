@@ -6,9 +6,9 @@
       }
     </style>
   </head>
-  <div style="padding:10px;margin:5px 35%;align-content: center; width:450px">
+  <div style="padding:10px;margin:5px 35%;align-content: center;min-width:200px; max-width:450px">
     <% if(typeof errors != 'undefined'){ %> <% errors.forEach(function(err){ %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div class="alert alert-danger alert-dismissible show" role="alert">
       <%= err.msg %>
       <button
         type="button"
@@ -20,7 +20,7 @@
       </button>
     </div>
     <% }); %> <% } %> <% if( success_msg != '' ){ %>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-success alert-dismissible show" role="alert">
       <%= success_msg %>
       <button
         type="button"

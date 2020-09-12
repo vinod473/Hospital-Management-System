@@ -211,19 +211,11 @@ app.post("/update/:token",(req,res)=>{
             dateOfAdmission : req.body.newdateofadmission
             }
         }
-        //,
-        // {
-        //     $set:{
-        //         status : { $ifNull: [req.body.newstatus,req.body.status] },
-        //         typeOfBed : { $ifNull: [req.body.newtypeofbed,req.body.typeOfBed] },
-        //         dateOfAdmission : { $ifNull: [req.body.newdateofadmission,req.body.dateOfAdmission] }
-        //     }
-        // }
     ],
     (err,user)=>{
         if(user){
             req.flash("success_msg","Successfully Updated !!");
-            res.render("dashboard");
+            res.redirect("patients");
         }
         else throw err;
     });

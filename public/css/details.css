@@ -16,7 +16,7 @@ body {
 }
 input {
     text-align:center;
-    width: 20%;
+    width: 200px;
     padding: 8px;
     margin: 5px 0 15px 0;
     display: inline-block;
@@ -24,7 +24,7 @@ input {
     background: #f7faf8;
 }
 hr {
-    border: 1px solid #f1f1f1;
+    border: 1px solid #0f0f0f;
     margin-bottom: 25px;
 }
 .registerbtn {
