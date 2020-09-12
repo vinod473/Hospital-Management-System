@@ -214,8 +214,7 @@ app.post("/update/:token",(req,res)=>{
     ],
     (err,user)=>{
         if(user){
-            req.flash("success_msg","Successfully Updated !!");
-            res.redirect("patients");
+            res.render("dashboard",{"success_msg":"Successfully Updated !!"});
         }
         else throw err;
     });
