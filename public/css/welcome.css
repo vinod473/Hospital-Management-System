@@ -37,12 +37,12 @@ body{
     padding-left: 70px;
 }
 .speciality{
-    font-family: 'Roboto';
+    font-family: "sfuisemibold",sans-serif;
     margin-top: 60px;
 }
 .title{
-    font-weight: 400;
-    color: blue;
+    font-weight: bold;
+    color:#0082a1;
 }
 .card-title{
     font-weight: 700;
@@ -66,4 +66,11 @@ body{
 .card-icon{
     width: 45px;
     height: 45px;
+}
+hr{
+    width:70px;
+    border-width: 5px;
+    margin-top: 15px;
+    margin-bottom: 35px;
+    border-color: purple;
 }
